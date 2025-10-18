@@ -1,0 +1,8 @@
+# Dependencias
+node_modules/
+
+# Archivos de build
+.next/
+dist/
+# Archivos de entorno
+.env.local
