@@ -1,0 +1,23 @@
+# PostgreSQL Configuration
+POSTGRES_USER=trento_leaa
+POSTGRES_PASSWORD=trento_leito29
+POSTGRES_DB=trento_erp
+DB_HOST=postgres
+DB_PORT=5432
+
+# JWT Configuration
+JWT_SECRET=HUSDHUFDSHU48GSSFHBVH73BLEA43
+JWT_EXPIRATION=3600s
+
+# Redis Configuration
+REDIS_HOST=redis
+REDIS_PORT=6379
+
+# Application Configuration
+API_PORT=3000
+
+# Frontend URL for redirects and integrations
+FRONTEND_URL=http://localhost:3001
+
+# MercadoPago Configuration
+MERCADOPAGO_ACCESS_TOKEN=TU_ACCESS_TOKEN_DE_PRUEBA
