@@ -27,7 +27,7 @@ export default function CartPage() {
                     {/* <img src="/placeholder.jpg" alt={item.name} className="h-16 w-16 object-cover rounded-md mr-4" /> */}
                     <div>
                       <h3 className="font-semibold text-gray-800">{item.name}</h3>
-                      <p className="text-sm text-gray-500">${item.price.toFixed(2)} c/u</p>
+                      <p className="text-sm text-gray-500">${item.price?.toFixed(2) || '0.00'} c/u</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4">
@@ -39,7 +39,7 @@ export default function CartPage() {
                       max={item.stockQuantity} // Limitar a stock disponible
                       className="w-16 text-center border rounded-md py-1"
                     />
-                    <p className="font-semibold w-24 text-right">${(item.price * item.quantity).toFixed(2)}</p>
+                    <p className="font-semibold w-24 text-right">${((item.price ?? 0) * item.quantity).toFixed(2)}</p>
                     <button onClick={() => removeFromCart(item.id)} className="text-red-500 hover:text-red-700 font-bold text-lg">
                       &times;
                     </button>
