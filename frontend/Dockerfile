@@ -1,5 +1,9 @@
 FROM node:18-alpine
 
+# --- PARCHE DE SEGURIDAD ---
+RUN apk update && apk upgrade
+# --- FIN DE PARCHE ---
+
 WORKDIR /app
 
 COPY package*.json ./
@@ -10,4 +14,4 @@ COPY . .
 
 EXPOSE 3001
 
-CMD ["npm", "run", "build"] && CMD ["npm", "start"]
+CMD ["sh", "-c", "npm run build && npm start"]
