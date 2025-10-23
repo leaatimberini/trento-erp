@@ -49,12 +49,10 @@ export default function CartPage() {
           <div className="md:col-span-1 bg-gray-50 p-6 rounded-lg shadow-md h-fit">
             <h2 className="text-xl font-bold border-b pb-2">Resumen</h2>
             <div className="mt-6 border-t pt-4 font-bold text-2xl flex justify-between">
-Note(note in response)
               <span>Total</span>
               <span>${totalAmount.toFixed(2)}</span>
             </div>
             <Link href="/checkout" className="block text-center mt-6 w-full px-4 py-3 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition-colors">
-Note(note in response)
               Proceder al Pago
             </Link>
           </div>
