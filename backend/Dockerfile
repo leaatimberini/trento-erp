@@ -1,25 +1,32 @@
-# Stage 1: Build
+# Stage 1: Build (Compilación)
 FROM node:18-alpine AS builder
 
-WORKDIR /usr/src/app
+# --- PARCHE DE SEGURIDAD ---
+RUN apk update && apk upgrade
+# --- FIN DE PARCHE ---
 
-# Ya no necesitamos las herramientas de compilación
-# RUN apk add --no-cache python3 make g++
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 RUN npm install
 
 COPY . .
+RUN npm run build
 
-# Stage 2: Production
+# ---
+# Stage 2: Production (Ejecución)
 FROM node:18-alpine
+
+# --- PARCHE DE SEGURIDAD ---
+RUN apk update && apk upgrade
+# --- FIN DE PARCHE ---
 
 WORKDIR /usr/src/app
 
-COPY --from=builder /usr/src/app ./
-
-RUN npm install -g @nestjs/cli
+COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=builder /usr/src/app/node_modules ./node_modules
+COPY --from=builder /usr/src/app/package.json ./package.json
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "start:prod"]
